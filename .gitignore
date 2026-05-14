@@ -1,0 +1,7 @@
+.idea/
+out/
+*.iml
+.DS_Store
+
+data/*.csv
+!data/.gitkeep

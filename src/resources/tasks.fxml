@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+
+<AnchorPane fx:id="root" prefHeight="852.0" prefWidth="393.0"
+            style="-fx-background-color: #f7f5ef;"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="TaskController">
+
+    <children>
+
+        <Pane prefHeight="185.0" prefWidth="393.0">
+            <children>
+                <Arc centerX="196.5"
+                     centerY="0.0"
+                     fill="#7aaacc"
+                     length="180.0"
+                     radiusX="196.5"
+                     radiusY="185.0"
+                     startAngle="180.0"
+                     stroke="#8d8d8d"
+                     type="ROUND" />
+
+                <Label layoutX="96.0"
+                       layoutY="41.0"
+                       style="-fx-font-size: 70px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0.2, 3, 3);"
+                       text="Planly" />
+            </children>
+        </Pane>
+
+        <Label layoutX="22.0"
+               layoutY="192.0"
+               prefHeight="58.0"
+               prefWidth="150.0"
+               style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #6c9ec9;"
+               text="Tasks" />
+
+        <Pane layoutX="22.0"
+              layoutY="250.0"
+              prefHeight="570.0"
+              prefWidth="350.0"
+              style="-fx-background-color: #d9eaf5; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 10, 0.2, 0, 4);">
+
+            <children>
+                <VBox layoutX="20.0"
+                      layoutY="20.0"
+                      prefWidth="310.0"
+                      spacing="15.0">
+
+                    <children>
+                        <TextField fx:id="taskInput"
+                                   prefHeight="50.0"
+                                   promptText="What needs to be done?"
+                                   style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5, 0.1, 0, 2);" />
+
+                        <HBox spacing="10.0">
+                            <children>
+                                <MenuButton fx:id="priorityMenu"
+                                            mnemonicParsing="false"
+                                            prefHeight="40.0"
+                                            prefWidth="130.0"
+                                            style="-fx-background-color: white; -fx-background-radius: 10;"
+                                            text="Priority">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Low" />
+                                        <MenuItem mnemonicParsing="false" text="Medium" />
+                                        <MenuItem mnemonicParsing="false" text="High" />
+                                    </items>
+                                </MenuButton>
+
+                                <DatePicker fx:id="datePicker"
+                                            prefHeight="40.0"
+                                            prefWidth="170.0"
+                                            promptText="Due Date"
+                                            style="-fx-background-color: white;" />
+                            </children>
+                        </HBox>
+
+                        <Button onAction="#handleCreateTask"
+                                prefHeight="45.0"
+                                prefWidth="310.0"
+                                style="-fx-background-color: #2f5878; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;"
+                                text="Add Task" />
+
+                        <ListView fx:id="taskListView"
+                                  prefHeight="260.0"
+                                  prefWidth="310.0"
+                                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: transparent;" />
+
+                        <HBox alignment="CENTER" spacing="10.0">
+                            <children>
+                                <Button onAction="#handleSortByImportance"
+                                        prefHeight="35.0"
+                                        prefWidth="95.0"
+                                        style="-fx-background-color: white; -fx-text-fill: #2f5878; -fx-font-size: 11px; -fx-background-radius: 8; -fx-border-color: #2f5878; -fx-border-radius: 8;"
+                                        text="Sort Priority" />
+
+                                <Button onAction="#handleSortByDate"
+                                        prefHeight="35.0"
+                                        prefWidth="95.0"
+                                        style="-fx-background-color: white; -fx-text-fill: #2f5878; -fx-font-size: 11px; -fx-background-radius: 8; -fx-border-color: #2f5878; -fx-border-radius: 8;"
+                                        text="Sort Date" />
+
+                                <Button onAction="#handleReset"
+                                        prefHeight="35.0"
+                                        prefWidth="95.0"
+                                        style="-fx-background-color: white; -fx-text-fill: #2f5878; -fx-font-size: 11px; -fx-background-radius: 8; -fx-border-color: #2f5878; -fx-border-radius: 8;"
+                                        text="Reset" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+
+        <HBox alignment="CENTER"
+              layoutY="787.0"
+              prefHeight="65.0"
+              prefWidth="393.0"
+              spacing="15.0"
+              style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, -2);">
+
+            <children>
+                <Button contentDisplay="TOP"
+                        onAction="#handleHome"
+                        prefHeight="55.0"
+                        prefWidth="90.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #8d8d8d; -fx-font-weight: bold; -fx-font-size: 12px;"
+                        text="Home">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" preserveRatio="true">
+                            <image>
+                                <Image url="@images/home.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button contentDisplay="TOP"
+                        onAction="#handleTasks"
+                        prefHeight="55.0"
+                        prefWidth="90.0"
+                        style="-fx-background-color: #d9eaf5; -fx-text-fill: #2f5878; -fx-font-weight: bold; -fx-font-size: 12px; -fx-background-radius: 15;"
+                        text="Tasks">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" preserveRatio="true">
+                            <image>
+                                <Image url="@images/clock.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+                <Button contentDisplay="TOP"
+                        onAction="#handleSettings"
+                        prefHeight="55.0"
+                        prefWidth="90.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #8d8d8d; -fx-font-weight: bold; -fx-font-size: 12px;"
+                        text="Settings">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" preserveRatio="true">
+                            <image>
+                                <Image url="@images/settings.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+
+    </children>
+</AnchorPane>

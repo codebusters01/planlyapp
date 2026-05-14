@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Arc?>
+
+<AnchorPane prefHeight="852.0" prefWidth="393.0" style="-fx-background-color: #f7f5ef;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+
+    <children>
+
+        <Pane prefHeight="185.0" prefWidth="393.0">
+            <children>
+                <Arc centerX="196.5" centerY="0.0" fill="#7aaacc" length="180.0" radiusX="196.5" radiusY="185.0" startAngle="180.0" stroke="#8d8d8d" type="ROUND" />
+
+                <Label layoutX="96.0" layoutY="41.0" style="-fx-font-size: 70px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0.2, 3, 3);" text="Planly" />
+            </children>
+        </Pane>
+
+        <Label layoutX="22.0" layoutY="192.0" prefHeight="58.0" prefWidth="126.0" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #6c9ec9;" text="Login" />
+
+        <Pane layoutX="22.0" layoutY="250.0" prefHeight="550.0" prefWidth="350.0" style="-fx-background-color: #d9eaf5; -fx-background-radius: 18; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 10, 0.2, 0, 4);">
+
+            <children>
+                <Label layoutX="35.0" layoutY="33.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6c9ec9;" text="Username" />
+
+                <TextField fx:id="usernameField" layoutX="35.0" layoutY="60.0" prefHeight="56.0" prefWidth="280.0" promptText="Enter Username" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0.2, 3, 3);" />
+
+                <Label layoutX="35.0" layoutY="125.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6c9ec9;" text="Password" />
+
+                <PasswordField fx:id="passwordField" layoutX="35.0" layoutY="152.0" prefHeight="56.0" prefWidth="280.0" promptText="Enter Password" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0.2, 3, 3);" />
+
+                <Label fx:id="messageLabel" layoutX="35.0" layoutY="215.0" prefHeight="25.0" prefWidth="280.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #b04a4a;" text="" />
+
+                <Button layoutX="35.0" layoutY="380.0" onAction="#handleLogin" prefHeight="56.0" prefWidth="280.0" style="-fx-background-color: #2f5878; -fx-text-fill: white; -fx-font-size: 15px; -fx-background-radius: 10;" text="Sign In" />
+
+                <Button layoutX="35.0" layoutY="450.0" onAction="#handleSignUp" prefHeight="56.0" prefWidth="280.0" style="-fx-background-color: white; -fx-text-fill: #2f5878; -fx-font-size: 15px; -fx-background-radius: 10;" text="Sign Up" />
+            </children>
+        </Pane>
+
+    </children>
+</AnchorPane>
