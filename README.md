@@ -4,9 +4,9 @@ Planly is a JavaFX task management application that helps users sign up, log in,
 
 ## Contributors
 
-- Khang
-- Janet
-- Joy
+- Khang Nguyen
+- Janet Yeboah
+- Darmierra - Joy Mbu Besong
 - Drake Barrientos
 
 ## MVC Structure
