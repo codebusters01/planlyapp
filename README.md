@@ -21,6 +21,113 @@ Planly is a JavaFX task management application that helps users sign up, log in,
 
 The app automatically creates `data/users.csv` and `data/tasks.csv` on first use. No setup needed.
 
+## UML Diagram
+
+```mermaid
+classDiagram
+direction LR
+
+class Main {
+  +currentUsername : String
+  +start(Stage)
+  +switchScene(ActionEvent, String)
+  +main(String[])
+}
+
+class LoginController
+class SignupController
+class HomeController
+class TaskController
+class SettingsController
+
+class Task {
+  -description : String
+  -priority : String
+  -date : LocalDate
+  -completed : boolean
+  -user : String
+  +toFileString() String
+}
+
+class UserManager {
+  +addUser(String, String)
+  +userExists(String) boolean
+  +validateLogin(String, String) boolean
+  +getDarkMode(String) boolean
+  +saveDarkMode(String, boolean)
+}
+
+class SettingsModel {
+  +getInstance() SettingsModel
+  +loadForCurrentUser()
+  +isDarkMode() boolean
+  +setDarkMode(boolean)
+}
+
+class Theme
+
+class LoginView {
+  <<View>>
+  login.fxml
+}
+
+class SignupView {
+  <<View>>
+  signup.fxml
+}
+
+class HomeView {
+  <<View>>
+  home.fxml
+}
+
+class TasksView {
+  <<View>>
+  tasks.fxml
+}
+
+class SettingsView {
+  <<View>>
+  settings.fxml
+}
+
+LoginView ..> LoginController : fx:controller
+SignupView ..> SignupController : fx:controller
+HomeView ..> HomeController : fx:controller
+TasksView ..> TaskController : fx:controller
+SettingsView ..> SettingsController : fx:controller
+
+Main --> LoginView : loads initial scene
+Main --> HomeView : scene switch
+Main --> TasksView : scene switch
+Main --> SettingsView : scene switch
+Main --> SignupView : scene switch
+
+LoginController --> UserManager : validate login
+LoginController --> SettingsModel : load settings
+LoginController --> Main : navigate
+
+SignupController --> UserManager : create user
+SignupController --> Main : navigate
+
+HomeController --> Task : read user tasks
+HomeController --> SettingsModel : load theme state
+HomeController --> Theme : apply styles
+HomeController --> Main : navigate
+
+TaskController --> Task : create/update tasks
+TaskController --> SettingsModel : load theme state
+TaskController --> Theme : apply styles
+TaskController --> Main : navigate
+
+SettingsController --> SettingsModel : toggle dark mode
+SettingsController --> Theme : apply styles
+SettingsController --> Main : navigate
+
+SettingsModel --> UserManager : persist dark mode
+Theme --> SettingsModel : read dark mode
+```
+
 ## Requirements
 
 - JDK 21
